@@ -33,11 +33,11 @@ namespace TrabalhoGrauB_OOP
         {
             if(tipoP == ComputingProcess.tipo)
             {
-                processos.Add(new ComputingProcess(expressao, CriarPid()));
+                processos.Add(new ComputingProcess(CriarPid(), expressao));
             }
             else if(tipoP == WritingProcess.tipo)
             {
-                processos.Add(new ComputingProcess(expressao, CriarPid()));
+                processos.Add(new WritingProcess(CriarPid(), expressao));
             }
         }
         public void CriarProcesso(string tipoP)
@@ -106,7 +106,7 @@ namespace TrabalhoGrauB_OOP
             }
         }
 
-        public void SalvarProcessos()
+        public void SalvarProcessos(string nomeArq)
         {
             StringBuilder sb = new();
             for(int i = 0; i < processos.Count; i++)
@@ -133,16 +133,16 @@ namespace TrabalhoGrauB_OOP
                 }
             }
 
-            StreamWriter sw = File.CreateText("fila_processos.txt");
+            StreamWriter sw = File.CreateText(nomeArq);
             sw.Write(sb.ToString());
             sw.Close();
         }
 
-        public void CarregarProcessos()
+        public void CarregarProcessos(string nomeArq)
         {
-            if (File.Exists("fila_processos.txt"))
+            if (File.Exists(nomeArq))
             {
-                StreamReader sr = File.OpenText("fila_processos.txt");
+                StreamReader sr = File.OpenText(nomeArq);
 
                 while(!sr.EndOfStream)
                 {
