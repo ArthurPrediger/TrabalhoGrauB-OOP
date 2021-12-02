@@ -11,10 +11,7 @@ namespace TrabalhoGrauB_OOP
     {
         public string expressao { get; }
         public new const string tipo = "escrita";
-        public string Tipo
-        {
-            get { return tipo; }
-        }
+
         public WritingProcess(int pid, string expressao) : base(pid)
         {
             this.expressao = expressao;
@@ -24,7 +21,8 @@ namespace TrabalhoGrauB_OOP
         {
             StreamWriter sw = File.AppendText("computation.txt");
             sw.WriteLine(expressao);
-            sw.Close();        
+            sw.Close();
+            Console.WriteLine("Processo de escrita executado.");
         }
         public string Serializar()
         {

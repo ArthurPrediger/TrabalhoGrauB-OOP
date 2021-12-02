@@ -70,6 +70,10 @@ namespace TrabalhoGrauB_OOP
             {
                 (processos[0] as PrintingProcess).Execute();
             }
+            else
+            {
+                Console.WriteLine("Nenhum processo na fila.");
+            }
             processos.RemoveAt(0);
         }
 
@@ -78,27 +82,27 @@ namespace TrabalhoGrauB_OOP
             if(processos.Exists(x => x.pid == pid))
             {
                 int index = processos.FindIndex(x => x.pid == pid);
-                if (processos[index].tipo == ComputingProcess.tipo)
+                if (processos[index] is ComputingProcess)
                 {
-                    ComputingProcess p = (ComputingProcess)processos[index];
-                    p.Execute();
+                    (processos[index] as ComputingProcess).Execute();
                 }
-                else if (processos[index].tipo == WritingProcess.tipo)
+                else if (processos[index] is WritingProcess)
                 {
-                    WritingProcess p = (WritingProcess)processos[index];
-                    p.Execute();
+                    (processos[index] as WritingProcess).Execute();
                 }
-                else if (processos[index].tipo == ReadingProcess.tipo)
+                else if (processos[index] is ReadingProcess)
                 {
-                    ReadingProcess p = (ReadingProcess)processos[index];
-                    p.Execute();
+                    (processos[index] as ReadingProcess).Execute();
                 }
-                else if (processos[index].tipo == PrintingProcess.tipo)
+                else if (processos[index] is PrintingProcess)
                 {
-                    PrintingProcess p = (PrintingProcess)processos[index];
-                    p.Execute();
+                    (processos[index] as PrintingProcess).Execute();
                 }
                 processos.RemoveAt(index);
+            }
+            else 
+            {
+                Console.WriteLine("Processo com o pid informado não existe.");
             }
         }
 
@@ -107,31 +111,28 @@ namespace TrabalhoGrauB_OOP
             StringBuilder sb = new();
             for(int i = 0; i < processos.Count; i++)
             {
-                if (processos[i].tipo == ComputingProcess.tipo)
+                if (processos[i] is ComputingProcess)
                 {
-                    ComputingProcess p = (ComputingProcess)processos[i];
-                    sb.AppendLine(p.Serializar());
+                    sb.AppendLine((processos[i] as ComputingProcess).Serializar());
                 }
-                else if (processos[i].tipo == WritingProcess.tipo)
+                else if (processos[i] is WritingProcess)
                 {
-                    WritingProcess p = (WritingProcess)processos[i];
-                    sb.AppendLine(p.Serializar());
+                    sb.AppendLine((processos[i] as WritingProcess).Serializar());
                 }
-                else if (processos[i].tipo == ReadingProcess.tipo)
+                else if (processos[i] is ReadingProcess)
                 {
-                    ReadingProcess p = (ReadingProcess)processos[i];
-                    sb.AppendLine(p.Serializar());
+                    sb.AppendLine((processos[i] as ReadingProcess).Serializar());
                 }
-                else if (processos[i].tipo == PrintingProcess.tipo)
+                else if (processos[i] is PrintingProcess)
                 {
-                    PrintingProcess p = (PrintingProcess)processos[i];
-                    sb.AppendLine(p.Serializar());
+                    sb.AppendLine((processos[i] as PrintingProcess).Serializar());
                 }
             }
 
             StreamWriter sw = File.CreateText(nomeArq);
             sw.Write(sb.ToString());
             sw.Close();
+            Console.WriteLine("Salvamento realizado.");
         }
 
         public void CarregarProcessos(string nomeArq)
@@ -164,6 +165,11 @@ namespace TrabalhoGrauB_OOP
                 }
 
                 sr.Close();
+                Console.WriteLine("Carregamento realizado.");
+            }
+            else
+            {
+                Console.WriteLine("O arquivo informado não existe.");
             }
         }
     }

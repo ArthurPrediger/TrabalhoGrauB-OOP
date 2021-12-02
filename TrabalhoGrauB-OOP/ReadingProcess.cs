@@ -10,7 +10,7 @@ namespace TrabalhoGrauB_OOP
     class ReadingProcess : Process
     {
         private List<Process> processos;
-        public new const string tipo = "leitura"; 
+        public new const string tipo = "leitura";
         public ReadingProcess(int pid, ref List<Process> processos) : base(pid)
         {
             this.processos = processos;
@@ -41,6 +41,7 @@ namespace TrabalhoGrauB_OOP
                 }
                 File.Create("computation.txt");
                 sr.Close();
+                Console.WriteLine("Processo de leitura executado.");
             }
         }
         public string Serializar()

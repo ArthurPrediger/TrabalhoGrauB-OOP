@@ -8,7 +8,7 @@ namespace TrabalhoGrauB_OOP
         {
             Console.WriteLine("\tExecução de processos");
             Console.WriteLine("1 - Criar processo");
-            Console.WriteLine("2 - Executar próximo processos na fila");
+            Console.WriteLine("2 - Executar próximo processo na fila");
             Console.WriteLine("3 - Executar processo específico");
             Console.WriteLine("4 - Salvar fila de processos");
             Console.WriteLine("5 - Carregar fila de processos");
@@ -81,12 +81,18 @@ namespace TrabalhoGrauB_OOP
                 Console.Write("Informe o nome do arquivo em que a fila de processos deseja ser ser salva: ");
                 string nomeArq = Console.ReadLine();
                 sistema.SalvarProcessos(nomeArq);
+
+                Console.WriteLine("\nPressione qualquer tecla para continuar.");
+                Console.ReadLine();
             }
             else if (input == 5)
             {
                 Console.Write("Informe o nome do arquivo do qual a fila de processos deseja ser carregada: ");
                 string nomeArq = Console.ReadLine();
                 sistema.CarregarProcessos(nomeArq);
+
+                Console.WriteLine("\nPressione qualquer tecla para continuar.");
+                Console.ReadLine();
             }
             else if (input == 6)
             {

@@ -11,10 +11,6 @@ namespace TrabalhoGrauB_OOP
         private List<Process> processos;
         public new const string tipo = "impressao";
 
-        public string Tipo
-        {
-            get { return tipo; }
-        }
         public PrintingProcess(int pid, ref List<Process> processos) : base(pid)
         {
             this.processos = processos;
@@ -22,23 +18,21 @@ namespace TrabalhoGrauB_OOP
 
         new public void Execute()
         {
-            for(int i = 0; i < processos.Count; i++)
+            Console.WriteLine("\tProcessos a serem executados");
+            for (int i = 0; i < processos.Count; i++)
             {
-                Console.WriteLine("\tProcessos a serem executados");
                 Console.WriteLine("Processo " + (i + 1) + ":");
                 Console.WriteLine("Pid: " + processos[i].pid);
-                Console.WriteLine("Tipo: " + processos[i].tipo);
-                if (processos[i].tipo == "computacao")
+                Console.WriteLine("Tipo: " + processos[i].Tipo);
+                if (processos[i] is ComputingProcess)
                 {
-                    ComputingProcess p = (ComputingProcess)processos[i];
-                    Console.WriteLine("Expressao: " + p.expressao);
+                    Console.WriteLine("Expressao: " + (processos[i] as ComputingProcess).expressao);
                 }
-                else if(processos[i].tipo == "computacao")
+                else if(processos[i] is WritingProcess)
                 {
-                    WritingProcess p = (WritingProcess)processos[i];
-                    Console.WriteLine("Expressao: " + p.expressao);
+                    Console.WriteLine("Expressao: " + (processos[i] as WritingProcess).expressao);
                 }
-
+                Console.WriteLine();
             }
         }
         public string Serializar()

@@ -9,7 +9,7 @@ namespace TrabalhoGrauB_OOP
     class Process
     {
         public int pid { get; set; }
-        public string tipo { get; set; }
+        public const string tipo = "abstrata";
         
         public Process(int pid)
         {
