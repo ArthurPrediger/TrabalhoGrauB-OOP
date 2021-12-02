@@ -21,6 +21,7 @@ namespace TrabalhoGrauB_OOP
                 input = int.Parse(Console.ReadLine());
             } while (input < 1 || input > 7);
 
+            Console.Clear();
             if(input == 1)
             {
                 Console.WriteLine("\tSeleção de processo");
@@ -62,12 +63,18 @@ namespace TrabalhoGrauB_OOP
             else if(input == 2)
             {
                 sistema.ExecutarProximo();
+
+                Console.WriteLine("\nPressione qualquer tecla para continuar.");
+                Console.ReadLine();
             }
             else if (input == 3)
             {
                 Console.Write("Informe o pid do processo a ser executado: ");
                 int pid = int.Parse(Console.ReadLine());
                 sistema.ExecutarEspecifico(pid);
+
+                Console.WriteLine("\nPressione qualquer tecla para continuar.");
+                Console.ReadLine();
             }
             else if (input == 4)
             {
@@ -85,6 +92,9 @@ namespace TrabalhoGrauB_OOP
             {
                 Environment.Exit(0);
             }
+
+            Console.Clear();
+            Menu(ref sistema);
         }
         static void Main()
         {

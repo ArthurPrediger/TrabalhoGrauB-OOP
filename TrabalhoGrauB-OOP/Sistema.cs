@@ -54,25 +54,21 @@ namespace TrabalhoGrauB_OOP
 
         public void ExecutarProximo()
         {
-            if (processos[0].tipo == ComputingProcess.tipo)
+            if (processos[0] is ComputingProcess)
             {
-                ComputingProcess p = (ComputingProcess)processos[0];
-                p.Execute();
+                (processos[0] as ComputingProcess).Execute();
             }
-            else if (processos[0].tipo == WritingProcess.tipo)
+            else if (processos[0] is WritingProcess)
             {
-                WritingProcess p = (WritingProcess)processos[0];
-                p.Execute();
+                (processos[0] as WritingProcess).Execute();
             }
-            else if (processos[0].tipo == ReadingProcess.tipo)
+            else if (processos[0] is ReadingProcess)
             {
-                ReadingProcess p = (ReadingProcess)processos[0];
-                p.Execute();
+                (processos[0] as ReadingProcess).Execute();
             }
-            else if (processos[0].tipo == PrintingProcess.tipo)
+            else if (processos[0] is PrintingProcess)
             {
-                PrintingProcess p = (PrintingProcess)processos[0];
-                p.Execute();
+                (processos[0] as PrintingProcess).Execute();
             }
             processos.RemoveAt(0);
         }
