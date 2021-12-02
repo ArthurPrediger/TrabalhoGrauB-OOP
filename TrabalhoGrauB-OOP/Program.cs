@@ -63,42 +63,32 @@ namespace TrabalhoGrauB_OOP
             else if(input == 2)
             {
                 sistema.ExecutarProximo();
-
-                Console.WriteLine("\nPressione qualquer tecla para continuar.");
-                Console.ReadLine();
             }
             else if (input == 3)
             {
                 Console.Write("Informe o pid do processo a ser executado: ");
                 int pid = int.Parse(Console.ReadLine());
                 sistema.ExecutarEspecifico(pid);
-
-                Console.WriteLine("\nPressione qualquer tecla para continuar.");
-                Console.ReadLine();
             }
             else if (input == 4)
             {
                 Console.Write("Informe o nome do arquivo em que a fila de processos deseja ser ser salva: ");
                 string nomeArq = Console.ReadLine();
                 sistema.SalvarProcessos(nomeArq);
-
-                Console.WriteLine("\nPressione qualquer tecla para continuar.");
-                Console.ReadLine();
             }
             else if (input == 5)
             {
                 Console.Write("Informe o nome do arquivo do qual a fila de processos deseja ser carregada: ");
                 string nomeArq = Console.ReadLine();
                 sistema.CarregarProcessos(nomeArq);
-
-                Console.WriteLine("\nPressione qualquer tecla para continuar.");
-                Console.ReadLine();
             }
             else if (input == 6)
             {
                 Environment.Exit(0);
             }
 
+            Console.WriteLine("\nPressione qualquer tecla para continuar.");
+            Console.ReadLine();
             Console.Clear();
             Menu(ref sistema);
         }

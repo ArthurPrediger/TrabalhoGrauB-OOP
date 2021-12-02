@@ -23,22 +23,30 @@ namespace TrabalhoGrauB_OOP
             {
                 Console.WriteLine("Processo " + (i + 1) + ":");
                 Console.WriteLine("Pid: " + processos[i].pid);
-                Console.WriteLine("Tipo: " + processos[i].Tipo);
                 if (processos[i] is ComputingProcess)
                 {
-                    Console.WriteLine("Expressao: " + (processos[i] as ComputingProcess).expressao);
+                    Console.WriteLine("Tipo: " + ComputingProcess.tipo);
+                    Console.WriteLine("Expressão: " + (processos[i] as ComputingProcess).expressao);
                 }
                 else if(processos[i] is WritingProcess)
                 {
-                    Console.WriteLine("Expressao: " + (processos[i] as WritingProcess).expressao);
+                    Console.WriteLine("Tipo: " + WritingProcess.tipo);
+                    Console.WriteLine("Expressão: " + (processos[i] as WritingProcess).expressao);
+                }
+                else if (processos[i] is ReadingProcess)
+                {
+                    Console.WriteLine("Tipo: " + ReadingProcess.tipo);
+                }
+                else if (processos[i] is PrintingProcess)
+                {
+                    Console.WriteLine("Tipo: " + PrintingProcess.tipo);
                 }
                 Console.WriteLine();
             }
         }
         public string Serializar()
         {
-            StringBuilder sb = new StringBuilder(tipo);
-            return sb.ToString();
+            return tipo;
         }
     }
 }

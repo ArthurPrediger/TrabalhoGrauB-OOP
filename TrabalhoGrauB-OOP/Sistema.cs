@@ -39,6 +39,8 @@ namespace TrabalhoGrauB_OOP
             {
                 processos.Add(new WritingProcess(CriarPid(), expressao));
             }
+
+            Console.WriteLine("O pid do processo criado é: " + processos.Last().pid.ToString());
         }
         public void CriarProcesso(string tipoP)
         {
@@ -50,31 +52,36 @@ namespace TrabalhoGrauB_OOP
             {
                 processos.Add(new PrintingProcess(CriarPid(), ref processos));
             }
+
+            Console.WriteLine("O pid do processo criado é: " + processos.Last().pid.ToString());
         }
 
         public void ExecutarProximo()
         {
-            if (processos[0] is ComputingProcess)
-            {
-                (processos[0] as ComputingProcess).Execute();
-            }
-            else if (processos[0] is WritingProcess)
-            {
-                (processos[0] as WritingProcess).Execute();
-            }
-            else if (processos[0] is ReadingProcess)
-            {
-                (processos[0] as ReadingProcess).Execute();
-            }
-            else if (processos[0] is PrintingProcess)
-            {
-                (processos[0] as PrintingProcess).Execute();
-            }
-            else
+            if (processos.Count < 1)
             {
                 Console.WriteLine("Nenhum processo na fila.");
             }
-            processos.RemoveAt(0);
+            else
+            {
+                if (processos.First() is ComputingProcess)
+                {
+                    (processos.First() as ComputingProcess).Execute();
+                }
+                else if (processos.First() is WritingProcess)
+                {
+                    (processos.First() as WritingProcess).Execute();
+                }
+                else if (processos.First() is ReadingProcess)
+                {
+                    (processos.First() as ReadingProcess).Execute();
+                }
+                else if (processos.First() is PrintingProcess)
+                {
+                    (processos.First() as PrintingProcess).Execute();
+                }
+                processos.RemoveAt(0);
+            }
         }
 
         public void ExecutarEspecifico(int pid)

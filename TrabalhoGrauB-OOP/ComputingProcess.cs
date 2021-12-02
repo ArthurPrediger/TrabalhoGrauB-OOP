@@ -11,7 +11,6 @@ namespace TrabalhoGrauB_OOP
         public string expressao { get; }
         public float resultado { get; set; }
         public new const string tipo = "computacao";
-
         public ComputingProcess(int pid, string expressao) : base(pid)
         {
             this.expressao = expressao;

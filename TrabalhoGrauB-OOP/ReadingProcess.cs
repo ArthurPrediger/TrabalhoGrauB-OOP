@@ -39,15 +39,15 @@ namespace TrabalhoGrauB_OOP
                     string linha = sr.ReadLine();
                     processos.Add(new ComputingProcess(CriarPid(), linha));
                 }
-                File.Create("computation.txt");
                 sr.Close();
+                File.Delete("computation.txt");
+                File.Create("computation.txt");
                 Console.WriteLine("Processo de leitura executado.");
             }
         }
         public string Serializar()
         {
-            StringBuilder sb = new StringBuilder(tipo);
-            return sb.ToString();
+            return tipo;
         }
     }
 }
